@@ -1,0 +1,33 @@
+<% include ./partials/header %>
+<main>
+
+
+
+  <!-- <a href="/dashboard/packets/add">Add Packet</a> -->
+  <br>
+  <div class="container">
+  <table border="1"  class="table table-stripe table-hover">
+    <thead>
+      <th>No</th>
+      <th>Packet Name</th>
+      <th>Quota</th>
+      <!-- <th colspan="2">Action</th> -->
+    </thead>
+    <tbody>
+      <%let no =1%>
+      <%dataPacket.forEach(packet=>{%>
+      <tr>
+        <td><%=no++%>.</td>
+        <td><%=packet.packet_name%></td>
+        <td><%=packet.quota%> Song</td>
+        <!-- <td> <a href="/dashboard/packets/edit/<%=packet.id%>" > EDIT</a></td>
+        <td> <a href="/dashboard/packets/delete/<%=packet.id%>" > DELETE</a></td>         -->
+      </tr>
+    </tbody>
+    <%})%>
+  </table>
+  
+</div>
+  
+</main>
+<% include ./partials/footer %>

@@ -1,0 +1,38 @@
+<% include ./partials/header_login %>
+<main>
+    <div class="container">
+        <form class="form-signin" action="/signup" method="post">
+            <h2 class="form-signin-heading">Join Music.8</h2>
+
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+
+            <label for="full_name" class="sr-only">Full Name</label>
+            <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Full Name" required autofocus>
+
+
+            <label for="gender" class="sr-only">Gender</label>
+            <select class="form-control" id="gender" name="gender" >
+                    <option class="" selected="selected" disabled>Select Your Gender</option>
+                    <option class="" value="Male">Male</option>
+                    <option class="" value="Female">Female</option>
+                </select>
+
+            <label for="email" class="sr-only">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
+
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> I agree to the 
+                    <a>Terms Of Use</a> and <a>Privacy Policy.</a>
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+            <br> Already have an account?
+            <a href="/login">Login</a>
+        </form>
+    </div>
+</main>
+<% include ./partials/footer %>

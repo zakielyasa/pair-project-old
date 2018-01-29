@@ -1,0 +1,17 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "qwerty",
+    "database": "pair_project",
+    "host"    : "127.0.0.1",
+    "dialect" : "postgres"
+  },
+
+  "production": {
+    "username": "zawxyofeupdmki",
+    "password": "6d05cff43e634973f0ac939ec59b06fbb699f907a9b7289e325239f2674b7027",
+    "database": "ddl9b47h8kv9mk",
+    "host"    : "ec2-107-21-205-25.compute-1.amazonaws.com",
+    "dialect" : "postgres"
+  }
+}

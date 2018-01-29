@@ -1,0 +1,41 @@
+<% include ./partials/header %>
+    <main>
+        <div class="container">
+            <form class="form-signin" action="/dashboard/profile/edit/<%=dataUser.id%>" method="post">
+                <h2 class="form-signin-heading">Edit Profile</h2>
+
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required value="<%= dataUser.username%>">
+
+                <label for="full_name" class="sr-only">Full Name</label>
+                <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Full Name" required value="<%= dataUser.full_name%>">
+
+                <label for="gender" class="sr-only">Gender</label>
+                <select class="form-control" id="gender" name="gender">
+                    <option class="" value="Male" <%=dataUser.gender=='Male' ? 'selected' : ''%> >Male</option>
+                    <option class="" value="Female" <%=dataUser.gender=='Female' ? 'selected' : ''%> >Female</option>
+                </select>
+
+                <label for="email" class="sr-only">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required value="<%= dataUser.email%>">
+
+                <label for="PacketId" class="sr-only">Add Packet</label>
+                <select class="form-control" id="PacketId" name="PacketId">
+                    <option value="" disabled selected>Choose your packet</option>
+                    <%for (let packet of PacketData){%>
+                        <option value="<%= packet.id %>" <%=packet.id==dataUser.PacketId ? 'selected' : '' %> >
+                            <%= packet.packet_name%>
+
+                        </option>
+                        <%}%>
+                </select>
+
+                <!-- <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required value=""> -->
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Edit</button>
+
+            </form>
+        </div>
+    </main>
+    <% include ./partials/footer %>

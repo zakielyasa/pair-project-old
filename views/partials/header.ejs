@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Music.8</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="icon" type="image/png" href="http://www.bernadetteengleman.com/img/skills/expressjs.png" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    main {
+      flex: 10 auto;
+    }
+
+    #footer {
+      margin-bottom: 30px;
+      text-align: center
+    }
+
+    .song-title {
+      float: left;
+    }
+
+    .song-duration {
+      float: right;
+    }
+
+    button:hover,
+    a:hover {
+      opacity: 0.7;
+    }
+
+    @import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
+    @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
+
+
+    .event-list {
+      list-style: none;
+      font-family: 'Lato', sans-serif;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .event-list>li {
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 0px 5px rgb(51, 51, 51);
+      box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+      padding: 0px;
+      margin: 0px 0px 20px;
+    }
+
+
+    .event-list>li>.info {
+      padding-top: 5px;
+      text-align: center;
+    }
+
+    .event-list>li>.info>.title {
+      font-size: 17pt;
+      font-weight: 700;
+      margin: 1px;
+    }
+
+    .event-list>li>.info>.desc {
+      font-size: 11pt;
+      font-weight: 300;
+      margin: 0px;
+    }
+
+    .event-list>li>.info>ul,
+    .event-list>li>.social>ul {
+      display: table;
+      list-style: none;
+      margin: 10px 0px 0px;
+      padding: 0px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .event-list>li>.social>ul {
+      margin: 0px;
+    }
+
+    .event-list>li>.info>ul>li,
+    .event-list>li>.social>ul>li {
+      display: table-cell;
+      cursor: pointer;
+      color: rgb(30, 30, 30);
+      font-size: 11pt;
+      font-weight: 300;
+      padding: 3px 0px;
+    }
+
+    .event-list>li>.info>ul>li>a {
+      display: block;
+      width: 100%;
+      color: rgb(30, 30, 30);
+      text-decoration: none;
+    }
+
+    .event-list>li>.social>ul>li {
+      padding: 0px;
+    }
+
+    .event-list>li>.social>ul>li>a {
+      padding: 3px 0px;
+    }
+
+    .facebook a,
+    .twitter a,
+    .instagram a {
+      display: block;
+      width: 100%;
+      color: rgb(75, 110, 168) !important;
+    }
+
+    .twitter a {
+      color: rgb(79, 213, 248) !important;
+    }
+
+    .instagram a {
+      color: rgb(221, 75, 57) !important;
+    }
+
+    .facebook:hover a {
+      color: rgb(255, 255, 255) !important;
+      background-color: rgb(75, 110, 168) !important;
+    }
+
+    .twitter:hover a {
+      color: rgb(255, 255, 255) !important;
+      background-color: rgb(79, 213, 248) !important;
+    }
+
+    .instagram:hover a {
+      color: rgb(255, 255, 255) !important;
+      background-color: rgb(221, 75, 57) !important;
+    }
+
+    @media (min-width: 768px) {
+      .event-list>li {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 120px;
+        padding: 0px;
+      }
+
+      .event-list>li>img {
+        display: inline-block;
+      }
+
+      .event-list>li>img {
+        width: 120px;
+        float: left;
+      }
+      .event-list>li>.info {
+        background-color: rgb(245, 245, 245);
+        overflow: hidden;
+      }
+
+      .event-list>li>img {
+        width: 120px;
+        height: 120px;
+        padding: 0px;
+        margin: 0px;
+      }
+      .event-list>li>.info {
+        position: relative;
+        height: 120px;
+        text-align: left;
+        padding-right: 40px;
+      }
+      .event-list>li>.info>.title,
+      .event-list>li>.info>.desc {
+        padding: 0px 10px;
+      }
+      .event-list>li>.info>ul {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+      }
+      .event-list>li>.social {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display: block;
+        width: 40px;
+      }
+      .event-list>li>.social>ul {
+        border-left: 1px solid rgb(230, 230, 230);
+      }
+      .event-list>li>.social>ul>li {
+        display: block;
+        padding: 0px;
+      }
+      .event-list>li>.social>ul>li>a {
+        display: block;
+        width: 40px;
+        padding: 10px 0px 9px;
+      }
+      .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+      }
+
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+
+      .form-signin .checkbox {
+        font-weight: 400;
+      }
+
+      .form-signin .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .form-signin .form-control:focus {
+        z-index: 2;
+      }
+
+      .form-signin input[type="username"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .form-signin select[name="gender"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .form-signin input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      /* Full-width input fields */
+      input[type=text],
+      input[type=email],
+      input[type=password],
+      select[name=gender] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      /* Set a style for all buttons */
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+      /* Extra styles for the cancel button */
+      .cancelbtn {
+        padding: 14px 20px;
+        background-color: #f44336;
+      }
+      /* Float cancel and signup buttons and add an equal width */
+      .cancelbtn,
+      .signupbtn {
+        float: left;
+        width: 50%;
+      }
+      /* Add padding to container elements */
+      .container {
+        padding: 16px;
+      }
+      /* Clear floats */
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      /* Change styles for cancel button and signup button on extra small screens */
+      @media screen and (max-width: 300px) {
+        .cancelbtn,
+        .signupbtn {
+          width: 100%;
+        }
+      }
+    }
+
+    #footer {
+      margin-bottom: 0px;
+      text-align: center
+    }
+  </style>
+</head>
+
+<body class="">
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header" align="center">
+        <a class="navbar-brand center" href="/dashboard" align="center">Music.8</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="/dashboard">Home</a>
+        </li>
+        <li>
+          <a href="/dashboard/profile">Profile</a>
+        </li>
+        <li>
+          <a href="/dashboard/songs">Music</a>
+        </li>
+        <li>
+          <a href="/dashboard/packets">Packet Info</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/logout">
+            <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
